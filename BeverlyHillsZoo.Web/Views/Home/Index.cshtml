@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Beverly Hills Zoo";
+}
+
+<h1 class="display-4">Animals</h1>
+<section class="col-12 d-flex flex-wrap">
+
+    <div class="col-4">
+        <div class="m-1 card d-flex justify-content-center align-items-center alert alert-info text-black" style="height: 230px;">
+            <h2>@ViewData["AirAnimalsTotal"]</h2>
+            <h2>Air</h2>
+            <a class="btn btn-info mt-2 text-white" asp-area="" asp-controller="Home" asp-action="AirAnimals">
+                Show Animals
+            </a>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="m-1 card d-flex justify-content-center align-items-center alert alert-primary text-black" style="height: 230px;">
+            <h2>@ViewData["LandAnimalsTotal"]</h2>
+            <h2>Land</h2>
+            <a class="btn btn-info mt-2 text-white" asp-area="" asp-controller="Home" asp-action="LandAnimals">
+                Show Animals
+            </a>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="m-1 card d-flex justify-content-center align-items-center alert alert-success text-black" style="height: 230px;">
+            <h2>@ViewData["WaterAnimalsTotal"]</h2>
+            <h2>Water</h2>
+            <a class="btn btn-info mt-2 text-white" asp-area="" asp-controller="Home" asp-action="WaterAnimals">
+                Show Animals
+            </a>
+        </div>
+    </div>
+
+</section>

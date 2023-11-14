@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BeverlyHillsZoo</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BeverlyHillsZoo.Web.styles.css" asp-append-version="true" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- favicon -->
+    @* <link rel="icon" href="~/images/Book.png" /> *@
+</head>
+<body>
+
+    <!-- Header Start -->
+    <partial name="_AdminHeaderPartial" />
+    <!-- Header End -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar Start -->
+            <partial name="_AdminSidebarPartial" />
+            <!-- Sidebar End -->
+            <!-- Main Start -->
+            <main role="main" class="col-10">
+                @RenderBody()
+            </main>
+            <!-- Main End -->
+        </div>
+    </div>
+
+    <!-- Form Modal Start -->
+    <div class="modal fade" id="form-modal" tabindex="-1" aria-labelledby="form-modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="form-modalLabel"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                @*<div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </div>*@
+            </div>
+        </div>
+    </div>
+    <!-- Form Modal End -->
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

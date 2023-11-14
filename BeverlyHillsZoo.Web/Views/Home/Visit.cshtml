@@ -1,0 +1,87 @@
+﻿@model VisitorAndVisitViewModel
+
+@{
+    ViewData["Title"] = "Visit";
+}
+
+<h1></h1>
+
+<h2>Visit @ViewData["AnimalName"]</h2>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+
+        @* alert-warning *@
+        @if (TempData["Warning"] != null)
+        {
+            <div class="alert alert-warning d-flex align-items-center" role="alert">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <div class="ms-3">
+                    @TempData["Warning"]
+                </div>
+            </div>
+        }
+
+        <form asp-action="Visit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="AnimalId" class="form-control" value="@ViewData["AnimalId"]" type="hidden" />
+            <input asp-for="AnimalName" class="form-control" value="@ViewData["AnimalName"]" type="hidden" />
+
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonNumber" class="control-label"></label>
+                <input asp-for="PersonNumber" class="form-control" />
+                <span asp-validation-for="PersonNumber" class="text-danger"></span>
+            </div>
+            <br />
+
+
+            <div class="form-group">
+                <label asp-for="VisitDate" class="control-label"></label>
+                <input asp-for="VisitDate" class="form-control" />
+                <span asp-validation-for="VisitDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AtMorning" /> @Html.DisplayNameFor(model => model.AtMorning)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AtAfternoon" /> @Html.DisplayNameFor(model => model.AtAfternoon)
+                </label>
+            </div>
+
+            <br />
+           
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary me-3" />
+                <a asp-action="index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+
+
+
+
+
+
+

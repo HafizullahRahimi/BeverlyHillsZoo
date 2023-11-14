@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Visit>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="">
+    <a asp-action="Create" class="btn btn-success float-end me-3">
+        <i class="fa-solid fa-plus me-2"></i>Create New
+    </a>
+    <h1 class="fs-2 text-black">Visits</h1>
+</div>
+<table class="table table-striped caption-top">
+    <thead>
+        <tr class="col-12">
+            <th >
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th class="">
+                @Html.DisplayNameFor(model => model.VisitDate)
+            </th>
+            @* <th class="">
+                @Html.DisplayNameFor(model => model.IsVisited)
+            </th> *@
+            <th class="">
+                @Html.DisplayNameFor(model => model.AtMorning)
+            </th>
+            <th class="">
+                @Html.DisplayNameFor(model => model.AtAfternoon)
+            </th>
+            <th class="">
+                @Html.DisplayNameFor(model => model.Animal)
+            </th>
+            <th class="">
+                @Html.DisplayNameFor(model => model.Visitor)
+            </th>
+            <th class="">
+                @Html.DisplayNameFor(model => model.Guide)
+            </th>
+            <th class="col-3"> Settings </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VisitDate)
+                </td>
+                @* <td>
+                    @Html.DisplayFor(modelItem => item.IsVisited)
+                </td> *@
+                <td>
+                    @Html.DisplayFor(modelItem => item.AtMorning)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AtAfternoon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Animal.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Visitor.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guide.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info mx-2">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-success mx-2">Details</a> |
+
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger mx-2">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

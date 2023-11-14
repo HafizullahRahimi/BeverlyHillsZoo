@@ -1,0 +1,69 @@
+﻿@model VisitViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Visit</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        @* alert-warning *@
+        @if (TempData["Warning"] != null)
+        {
+            <div class="alert alert-warning d-flex align-items-center" role="alert">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <div class="ms-3">
+                    @TempData["Warning"]
+                </div>
+            </div>
+        }
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="Id" class="form-control" value="0" type="hidden" />
+            <input asp-for="NumberOfVisitor" class="form-control" value="0" type="hidden" />
+            <div class="form-group">
+                <label asp-for="VisitDate" class="control-label"></label>
+                <input asp-for="VisitDate" class="form-control" />
+                <span asp-validation-for="VisitDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AtMorning" /> @Html.DisplayNameFor(model => model.AtMorning)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AtAfternoon" /> @Html.DisplayNameFor(model => model.AtAfternoon)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnimalId" class="control-label"></label>
+                <select asp-for="AnimalId" class ="form-control" asp-items="ViewBag.AnimalId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="VisitorId" class="control-label"></label>
+                <select asp-for="VisitorId" class ="form-control" asp-items="ViewBag.VisitorId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuideId" class="control-label"></label>
+                <select asp-for="GuideId" class ="form-control" asp-items="ViewBag.GuideId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
